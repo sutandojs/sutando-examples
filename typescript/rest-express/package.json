@@ -1,0 +1,27 @@
+{
+  "name": "rest-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "ts-node src/sutando/migrate.ts",
+    "migrate:rollback": "ts-node src/sutando/migrate.ts rollback",
+    "seed": "ts-node src/sutando/seed.ts",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "sqlite3": "^5.1.6",
+    "sutando": "1.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "4.17.21",
+    "@types/node": "20.11.20",
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3"
+  }
+}
