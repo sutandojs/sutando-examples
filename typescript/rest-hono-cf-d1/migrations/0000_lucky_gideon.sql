@@ -1,0 +1,11 @@
+CREATE TABLE `posts` (`id` varchar(255), `author_id` varchar(255) default '', `title` varchar(255), `content` varchar(255), `published` boolean default '0', `views_count` integer default '0', `created_at` datetime, `updated_at` datetime);
+INSERT INTO posts VALUES('b0a99e86-417d-42ad-a710-d2d74f8074a8','6ad9a43f-33a4-4958-a342-cfb578850228','Check out Sutando on GitHub','https://github.com/sutandojs/sutando',1,0,'2024-04-15 03:06:39','2024-04-15 03:06:39');
+INSERT INTO posts VALUES('2bd14692-a69d-480d-8697-fd6a536d266e','99f6bcfa-6195-47dc-8e83-c653c99b2f27','Sutando Documentation','https://sutando.org',1,0,'2024-04-15 03:06:39','2024-04-15 03:06:39');
+INSERT INTO posts VALUES('66553927-ddbe-435d-ac2e-f6cd381cb516','7c753e30-f53a-45ca-b902-67bb0cbe4ef0','Contribute to Sutando on GitHub','https://github.com/sutandojs/sutando/issues',1,0,'2024-04-15 03:06:40','2024-04-15 03:06:40');
+INSERT INTO posts VALUES('7a59a34c-6f4a-4c6b-99ff-45c4333d2627','7c753e30-f53a-45ca-b902-67bb0cbe4ef0','Pull Requests for Sutando','https://github.com/sutandojs/sutando/pulls',0,0,'2024-04-15 03:06:40','2024-04-15 03:06:40');
+CREATE TABLE `users` (`id` varchar(255), `name` varchar(255), `email` varchar(255), `created_at` datetime, `updated_at` datetime);
+INSERT INTO users VALUES('6ad9a43f-33a4-4958-a342-cfb578850228','Alice','alice@sutando.org','2024-04-15 03:06:38','2024-04-15 03:06:38');
+INSERT INTO users VALUES('99f6bcfa-6195-47dc-8e83-c653c99b2f27','Nilu','nilu@sutando.org','2024-04-15 03:06:39','2024-04-15 03:06:39');
+INSERT INTO users VALUES('7c753e30-f53a-45ca-b902-67bb0cbe4ef0','Mahmoud','mahmoud@sutando.org','2024-04-15 03:06:39','2024-04-15 03:06:39');
+CREATE UNIQUE INDEX `posts_id_unique` on `posts` (`id`);
+CREATE UNIQUE INDEX `users_id_unique` on `users` (`id`);

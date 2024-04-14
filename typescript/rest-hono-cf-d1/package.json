@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts"
+  },
+  "dependencies": {
+    "hono": "^4.2.3",
+    "knex-cloudflare-d1": "^0.1.0",
+    "sutando": "1.5.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240403.0",
+    "@types/uuid": "^9.0.8",
+    "wrangler": "^3.47.0"
+  }
+}
