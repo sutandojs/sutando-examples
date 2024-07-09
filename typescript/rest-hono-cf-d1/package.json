@@ -5,8 +5,8 @@
   },
   "dependencies": {
     "hono": "^4.2.3",
-    "knex-cloudflare-d1": "^0.1.0",
-    "sutando": "1.5.1",
+    "knex-cloudflare-d1": "^0.1.1",
+    "sutando": "1.5.4",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

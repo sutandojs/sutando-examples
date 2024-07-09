@@ -9,6 +9,6 @@
     "@hono/node-server": "^1.8.1",
     "hono": "^4.0.7",
     "sqlite3": "^5.1.7",
-    "sutando": "1.2.1"
+    "sutando": "1.5.4"
   }
 }
