@@ -1,27 +1,24 @@
 import { Model, HasUniqueIds } from 'sutando';
 import { v4 as uuid } from 'uuid';
 
-const BaseModel = HasUniqueIds(Model) as typeof Model;
+const UuidModel = HasUniqueIds(Model) as typeof Model;
 
-export class User extends BaseModel {
+export class User extends Model {
   table = 'users';
 
-  id!: string;
-  name!: string;
+  id!: number;
+  first_name!: string;
+  last_name!: string;
   email!: string;
   created_at!: Date;
   updated_at!: Date;
-
-  newUniqueId(): string {
-    return uuid();
-  }
 
   relationPosts() {
     return this.hasMany(Post, 'author_id');
   }
 }
 
-export class Post extends BaseModel {
+export class Post extends UuidModel {
   table = 'posts';
 
   id!: string;
@@ -30,11 +27,11 @@ export class Post extends BaseModel {
   content!: string;
   created_at!: Date;
   updated_at!: Date;
-  published!: boolean;
+  published_at!: Date;
   views_count!: number;
 
   casts = {
-    published: 'boolean'
+    published_at: 'datetime'
   }
 
   newUniqueId(): string {

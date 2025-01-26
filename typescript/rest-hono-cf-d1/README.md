@@ -21,17 +21,25 @@ npm install
 
 ### 2. Create and seed the database
 
-Run the command to create your D1 database
+> [!IMPORTANT]  
+> Update [wrangler.toml](./wrangler.toml) database_id
 
-```
+Run the command to create your production D1 database
+
+```bash
 npx wrangler d1 create test-sutando
 ```
-Update [wrangler.toml](./wrangler.toml) database_id
+
+Run the command to create your local D1 database
+
+```bash
+npx knex-cloudflare-d1 setup
+```
 
 Import test data to local database
 
 ```
-npx wrangler d1 execute test-sutando --local --file=./migrations/0000_lucky_gideon.sql 
+npx sutando migrate:run
 ```
 
 ### 3. Start the REST API server
@@ -67,7 +75,8 @@ You can access the REST API of the server using the following endpoints:
 - `/users`: Create a new user
   - Body:
     - `email: String` (required): The email address of the user
-    - `name: String` (optional): The name of the user
+    - `first_name: String` (optional): The first name of the user
+    - `last_name: String` (optional): The last name of the user
 
 ### `PUT`
 
