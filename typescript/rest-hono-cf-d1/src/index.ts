@@ -2,6 +2,7 @@ import { Hono } from 'hono';
 import { ModelNotFoundError, sutando } from 'sutando';
 import { Post, User } from './models';
 import type { OrderByDirection } from 'sutando';
+// @ts-ignore
 import config from "../sutando.config.cjs";
 
 type Bindings = {
@@ -111,7 +112,7 @@ app.put('/publish/:id', async (c) => {
   const { id } = c.req.param();
 
   const post = await Post.query().findOrFail(id);
-  post.published = !post.published;
+  post.published_at = new Date();
   await post.save();
 
   return c.json(post);
