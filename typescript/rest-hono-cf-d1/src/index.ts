@@ -2,7 +2,8 @@ import { Hono } from 'hono';
 import { ModelNotFoundError, sutando } from 'sutando';
 import { Post, User } from './models';
 import type { OrderByDirection } from 'sutando';
-import ClientD1 from 'knex-cloudflare-d1';
+// @ts-ignore
+import config from "../sutando.config.cjs";
 
 type Bindings = {
   DB: D1Database
@@ -10,12 +11,17 @@ type Bindings = {
 
 const app = new Hono();
 
+app.get('/', (c) => {
+  return c.text("Hello World");
+});
+
 app.post(`/users`, async (c) => {
   const body = await c.req.json();
-  const { name, email } = body;
+  const { first_name, last_name, email } = body;
 
   const user = new User({
-    name,
+    first_name,
+    last_name,
     email,
   });
   await user.save();
@@ -48,7 +54,7 @@ app.put('/posts/:id/views', async (c) => {
 
 app.get('/users', async (c) => {
   const users = await User.query().withCount({
-    posts: q => q.where('published', true)
+    posts: q => q.whereNotNull('published_at')
   }).get();
   return c.json(users);
 });
@@ -58,7 +64,7 @@ app.get('/users/:id/drafts', async (c) => {
 
   const drafts = await User.query()
     .with({
-      posts: q => q.where('published', false),
+      posts: q => q.whereNull('published_at'),
     })
     .findOrFail(id);
 
@@ -106,7 +112,7 @@ app.put('/publish/:id', async (c) => {
   const { id } = c.req.param();
 
   const post = await Post.query().findOrFail(id);
-  post.published = !post.published;
+  post.published_at = new Date();
   await post.save();
 
   return c.json(post);
@@ -127,11 +133,10 @@ app.onError((err, c) => {
 export default {
   fetch: (req: Request, env: Bindings) => {
     sutando.addConnection({
-      client: ClientD1,
+      ... config,
       connection: {
         database: env.DB
       },
-      useNullAsDefault: true,
     });
 
     return app.fetch(req, env)
