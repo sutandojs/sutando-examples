@@ -7,8 +7,8 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "migrate": "ts-node sutando/migrate.ts",
-    "migrate:rollback": "ts-node sutando/migrate.ts rollback",
+    "migrate": "sutando migrate:run",
+    "migrate:rollback": "sutando migrate:rollback",
     "seed": "ts-node sutando/seed.ts",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -30,7 +30,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5",
     "sqlite3": "^5.1.7",
-    "sutando": "1.5.4"
+    "sutando": "1.7.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

@@ -21,7 +21,7 @@ npm install
 
 ### 2. Create and seed the database
 
-Run the following command to create your SQLite database file. This also creates the `users` and `posts` tables that are defined in [`sutando/migrate.js`](./sutando/migrate.js):
+Run the following command to create your SQLite database file. This also creates the `users` and `posts` tables that are defined in [`migrations`](./migrations):
 
 ```
 npm run migrate

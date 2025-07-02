@@ -14,6 +14,7 @@ export class AppService {
       connection: {
         filename: "./example.db"
       },
+      useNullAsDefault: true,
     });
   }
 }

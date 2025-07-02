@@ -1,16 +1,15 @@
 {
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "migrate": "tsx src/sutando/migrate.ts",
-    "migrate:rollback": "tsx src/sutando/migrate.ts rollback",
+    "migrate": "sutando migrate:run",
+    "migrate:rollback": "sutando migrate:rollback",
     "seed": "tsx src/sutando/seed.ts"
   },
-  "type": "module",
   "dependencies": {
-    "@hono/node-server": "^1.8.1",
-    "hono": "^4.0.7",
+    "@hono/node-server": "^1.13.4",
+    "hono": "^4.6.3",
     "sqlite3": "^5.1.7",
-    "sutando": "1.5.4"
+    "sutando": "1.7.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",

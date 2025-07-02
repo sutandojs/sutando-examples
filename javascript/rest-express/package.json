@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "migrate": "node src/sutando/migrate.js",
-    "migrate:rollback": "node src/sutando/migrate.js rollback",
+    "migrate": "sutando migrate:run",
+    "migrate:rollback": "sutando migrate:rollback",
     "start": "node src/index.js",
     "seed": "node src/sutando/seed.js"
   },
@@ -16,6 +16,6 @@
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
     "sqlite3": "^5.1.6",
-    "sutando": "1.5.4"
+    "sutando": "1.7.2"
   }
 }
